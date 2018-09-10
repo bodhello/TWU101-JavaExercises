@@ -25,7 +25,7 @@ public class PrimeFactors {
                 }
             }
         }
-        System.out.println(primeFactors);
+//        System.out.println(primeFactors);
         return primeFactors;
     }
 }
