@@ -13,17 +13,8 @@ public class DiamondExercises {
 //             ***
 //            *****
     private static void drawAnIsoscelesTriangle(int n) {
-        String spaces = "";
-        String stars = "*";
-        for (int i = n; i > 1; --i) {
-            spaces += " ";
-        }
-        for (int j = 0; j < n; ++j){
-            System.out.println(spaces + stars);
-            stars += "**";
-            spaces = spaces.substring(0,
-                    spaces.length()-1 > 0 ? spaces.length()-1 : 0);
-        }
+        drawNMinusOne(n);
+        drawStarLine(n);
     }
 
 //    Diamond
@@ -35,18 +26,7 @@ public class DiamondExercises {
 //              *
     private static void drawADiamond(int n) {
         drawAnIsoscelesTriangle(n);
-        String spaces = " ";
-        String stars = "*";
-        for (int i = n; i > 2; --i) {
-            stars += "**";
-        }
-        for (int j = 0; j < n; ++j){
-            System.out.println(spaces + stars);
-            spaces += " ";
-            stars = stars.substring(0,
-                    stars.length()-2 > 0 ? stars.length()-2 : 0);
-        }
-
+        drawNMinusOneFlip(n);
     }
 
 //    Diamond with Name
@@ -58,6 +38,48 @@ public class DiamondExercises {
 //            ***
 //             *
     private static void drawADiamondWithYourName(int n) {
+        drawNMinusOne(n);
+        System.out.println("Bodhi");
+        drawNMinusOneFlip(n);
+    }
 
+    // Helper
+    // Given a number n, prints n-1 lines of a centered triangle
+    private static void drawNMinusOne(int n) {
+        StringBuilder line = new StringBuilder("");
+        for (int i = n; i > 1; --i) {
+            line.append(" ");
+        }
+        line.append("*");
+        for (int j = 1; j < n; ++j){
+            System.out.println(line.toString());
+            line.append("**");
+            line.deleteCharAt(0);
+        }
+    }
+
+    // Helper
+    // Given a number n, prints n-1 lines of an upsidedown centered triangle
+    private static void drawNMinusOneFlip(int n) {
+        StringBuilder line = new StringBuilder(" ");
+        for (int i = n; i > 2; --i) {
+            line.append("**");
+        }
+        line.append("*");
+        for (int j = 1; j < n; ++j){
+            System.out.println(line.toString());
+            line.insert(0, " ");
+            line.delete(line.length()-2,line.length());
+        }
+    }
+
+    // Helper
+    // Given a number n, prints n stars on a single line
+    private static void drawStarLine(int n){
+        System.out.print("*");
+        for (int i = 1; i < n; ++i) {
+            System.out.print("**");
+        }
+        System.out.println();
     }
 }
