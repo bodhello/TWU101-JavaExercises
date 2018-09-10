@@ -13,7 +13,17 @@ public class DiamondExercises {
 //             ***
 //            *****
     private static void drawAnIsoscelesTriangle(int n) {
-
+        String spaces = "";
+        String stars = "*";
+        for (int i = n; i > 1; --i) {
+            spaces += " ";
+        }
+        for (int j = 0; j < n; ++j){
+            System.out.println(spaces + stars);
+            stars += "**";
+            spaces = spaces.substring(0,
+                    spaces.length()-1 > 0 ? spaces.length()-1 : 0);
+        }
     }
 
 //    Diamond
@@ -24,6 +34,18 @@ public class DiamondExercises {
 //             ***
 //              *
     private static void drawADiamond(int n) {
+        drawAnIsoscelesTriangle(n);
+        String spaces = " ";
+        String stars = "*";
+        for (int i = n; i > 2; --i) {
+            stars += "**";
+        }
+        for (int j = 0; j < n; ++j){
+            System.out.println(spaces + stars);
+            spaces += " ";
+            stars = stars.substring(0,
+                    stars.length()-2 > 0 ? stars.length()-2 : 0);
+        }
 
     }
 
