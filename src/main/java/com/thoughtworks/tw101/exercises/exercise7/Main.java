@@ -17,9 +17,11 @@ public class Main {
 class GuessingGame {
     private int answer;
     private boolean gameOver = true;
+    private static final int UPPER_BOUND = 100;
+    private static final int LOWER_BOUND = 1;
 
     GuessingGame() {
-        this.answer = (int) (Math.random() * 100) + 1;
+        this.answer = (int) (Math.random() * (UPPER_BOUND - LOWER_BOUND + 1) + LOWER_BOUND);
     }
 
     public void startGame(){
@@ -27,7 +29,7 @@ class GuessingGame {
         int guess;
         gameOver = false;
         while (!gameOver) {
-            System.out.print("Please guess a number between 1 and 100: ");
+            System.out.printf("Please guess a number between %d and %d: ", LOWER_BOUND, UPPER_BOUND);
             guess = reader.nextInt();
             gameOver = guessNum(guess);
         }
